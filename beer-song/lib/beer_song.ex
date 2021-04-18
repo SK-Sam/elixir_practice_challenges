@@ -22,8 +22,16 @@ defmodule BeerSong do
   @doc """
   Get the entire beer song for a given range of numbers of bottles.
   """
-  @spec lyrics(Range.t()) :: String.t()
-  def lyrics(range) do
-    # Your implementation here...
+  def lyrics do
+    lyrics(99..0)
   end
+
+  @spec lyrics(Range.t()) :: String.t()
+  def lyrics(bottles..lowest) do
+    if bottles >= lowest do
+      #"#{verse(bottles)}#{lyrics((bottles - 1)..lowest)}"
+      "\n#{verse(bottles)}" <> "#{lyrics((bottles - 1)..lowest)}"
+    end
+  end
+
 end
